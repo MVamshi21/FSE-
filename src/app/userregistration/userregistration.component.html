@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main-block">
+      <div class="left-part">
+        <img src="../../assets/movie1.jpg" style="height:480px; width:500px">
+        <div class="title1">
+            <h1 style="color:black">Register With Us</h1>
+            <p style="color:black">Get Unlimited Movie Experience, Hundreds of <br>Vouchers and free Popcorn with Every Booking </p>
+         </div>
+      </div>
+      <form #Registerform="ngForm" (ngSubmit)="registerUser()">
+        <div class="title">
+          <i class="fas fa-pencil-alt"></i> 
+          <h2>Register here</h2>
+        </div>
+        <div class="info">
+         <!-- <input class="id" type="number" name="id" placeholder="UserId" [(ngModel)]="user.id"> -->
+          <input class="fname" type="text" name="name" placeholder="firstName" [(ngModel)]="user.firstName" required>
+          <input class="lname" type="text" name="name" placeholder="lastName" [(ngModel)]="user.lastName" required>
+          <input class="email" type="text" name="name" placeholder="email" [(ngModel)]="user.email" required>
+          <input type="text" name="phn" placeholder="Role" [(ngModel)]="user.roles" required>
+          <input class="number" type="text" name="name" placeholder="number" [(ngModel)]="user.contactNumber" required>
+
+          <input type="password" name="psw" placeholder="Password" [(ngModel)]="user.password" required>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="checkbox"><span>I agree to the Privacy Policy for TicketNew</span>
+        </div>
+        <button type="submit">Submit</button>
+        <small style="color:red; text-align:center">{{msg}}</small><br>
+      </form>
+    </div>
+  </body>
+</html>

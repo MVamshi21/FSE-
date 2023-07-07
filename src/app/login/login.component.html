@@ -1,0 +1,26 @@
+
+<form #loginform="ngForm" (ngSubmit)="loginUser()">
+  <div class="imgcontainer">
+    <img src="../../assets/movie.webp" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter LoginId" name="LoginId" [(ngModel)]="user.loginId" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="user.password" required>
+        
+    <button type="submit">Login</button>
+    <small style="color:red; text-align:center">{{msg}}</small><br>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+     <span class="psw" (click)="gotoregistration()">New User? Register Here</span> 
+    <!-- <span class="psw" [routerLink]="['/register']">New User? Register Here</span> -->
+  </div>
+</form>

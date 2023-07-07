@@ -1,0 +1,23 @@
+<h1 style="text-align:center">Add Ticket</h1>
+
+ <form class="login-form" #ticketForm="ngForm" (ngSubmit)="addTicket(ticketObj.movie_id_fk)">
+  <h1>Add Ticket</h1>
+
+  <div class="form-input-material">
+    Movie Id<br>
+    <input type="number" name="movie_id_fk" class="form-control-material" #movie_id_fk [(ngModel)]="ticketObj.movie_id_fk" required />
+  </div>
+
+  <div class="form-input-material">
+    Tickets Needed<br>
+    <input type="number" name="bookedTickets" class="form-control-material" [(ngModel)]="ticketObj.bookedTickets" required />
+  </div>
+
+  <div class="form-input-material">
+    Date:
+    <input type="date" name="date" class="form-control-material" [(ngModel)]="ticketObj.date" required />
+  </div>
+  <button type="submit" class="btn btn-primary btn-ghost">Add</button>
+</form>
+
+

@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>TicketNew</span>
+     <a mat-button routerLink="/home">Home</a>
+     <a mat-button routerLink="/movie">Movie</a>
+     <!-- <a mat-button routerLink="/ticket">Ticket</a> -->
+     <a mat-button routerLink="/about">About</a>
+     <a mat-button routerLink="/contact">Contact</a>
+     <span class="spacer"></span>
+     <div *ngIf="loggedIn"> <a mat-button (click)="logOut()">Logout</a></div>
+     <div *ngIf="!loggedIn"><a mat-button routerLink="/login">Login</a></div> 
+     <!-- <a mat-button routerLink="/login">Login</a> -->
+     <a mat-button routerLink="/register">Register</a>
+    </mat-toolbar-row>
+    </mat-toolbar>
+
+
+   <router-outlet></router-outlet>

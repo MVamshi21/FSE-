@@ -1,0 +1,147 @@
+<!--To get the movie by id-->
+<!--  <div>
+   <input type="number" placeholder="Provide id only" [(ngModel)]="moviem.movieId"><br>
+  <button mat-raised-button color="primary" (click)="searchById()" style="margin:10px">Know Movie</button><br>
+  {{response}}  
+</div> 
+ -->
+
+<!--To get all movies-->
+<button mat-raised-button color="primary" (click)="viewAllMovies()" style="margin:10px">View Streaming Movies</button>    
+<div class="container1">
+<mat-card class="example-card" *ngFor="let movie of dataSource">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{movie.movieid}}: {{movie.movieName}}</mat-card-title>
+      <mat-card-subtitle>Streaming Now</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]='movie.img' alt="I am {{movie.movieName}} poster" style="width:350px; height:270px; margin-left:10px">
+    <mat-card-content>
+        <br>
+      <p style="text-align:center">Theatre Name: {{movie.theatreName}}</p>
+      <p style="text-align:center">Available Tickets: {{movie.noOfTicketsAvailable}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [routerLink]="['/ticket',movie.movieId]" style="margin:5px">Book</button>
+      <button mat-raised-button color="warn" (click)=" deleteMovie(movie.movieId)" style="margin-left:40px; margin-right:40px" *ngIf="isAdmin">Delete</button>
+      <button mat-raised-button color="primary" (click)="edit(movie)" style="margin:5px" data-bs-toggle="modal" 
+                                data-bs-target="#exampleModal" *ngIf="isAdmin">Update</button>
+    </mat-card-actions>
+  </mat-card>
+</div> 
+
+
+
+<div class="movie-container" style="text-align:center">
+  <mat-expansion-panel  *ngIf="isAdmin">
+   <mat-expansion-panel-header>
+      <mat-panel-title>
+         <button mat-raised-button color="primary">Add Movie</button> 
+      </mat-panel-title>
+   </mat-expansion-panel-header>
+  
+  <div class="movie_id">
+  <mat-form-field>
+      <input matInput placeholder="Enter ID" name="movieId" [(ngModel)]="movieObj.movieid" required>
+  </mat-form-field>
+  </div>
+
+  <div class="movie_name">
+      <mat-form-field>
+          <input matInput placeholder="Enter Name" name="movieName" [(ngModel)]="movieObj.movieName" required>
+      </mat-form-field>
+  </div>
+
+  <div class="img">
+      <mat-form-field>
+          <input matInput placeholder="Enter image Url" name="img" [(ngModel)]="movieObj.img" required>
+      </mat-form-field>
+      </div>
+
+  <div class="theatre_name">
+      <mat-form-field>
+          <input matInput placeholder="Enter Theatre Name" name="theatreName" [(ngModel)]="movieObj.theatreName" required>
+      </mat-form-field>
+  </div>
+
+  <div class="available_tickets">
+      <mat-form-field>
+          <input matInput placeholder="Enter Available Tickets" name="availableTickets" [(ngModel)]="movieObj.noOfTicketsAvailable" required>
+      </mat-form-field>
+  </div>
+
+  <mat-action-row>
+      <div class="conatiner-fluid padding">
+          <div class="row">
+              <div class="col-md-2" style="text-align:center">
+                      <button (click)="addMovieDetails()" mat-raised-button color="accent" >Add</button>
+              </div>
+          </div>
+      </div>
+  </mat-action-row>
+  </mat-expansion-panel>
+</div>
+ 
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Movie</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+        <form #updateForm="ngForm" (ngSubmit)="update()">
+          <div class="form-group">
+            <input type="text" disabled #id [(ngModel)]="moviem.movieid" name="id" id="id"
+              class="form-control" placeholder="Movie Id">
+          </div>
+          <div class="form-group">
+            <label for="mname">Movie Name :</label>
+            <input type="text" #mname [(ngModel)]="moviem.movieName" name="mname" id="mname"
+              class="form-control" placeholder="Movie Name">
+          </div>
+          <div class="form-group">
+            <label for="tname">Theatre Name :</label>
+            <input type="text" #tname [(ngModel)]="moviem.theatreName" name="tname" id="tname" class="form-control"
+              placeholder="Theatre Name">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-primary w-100">
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <h1>&nbsp;&nbsp;<b>The Best Of Live Events</b></h1>
+  <div class="column">
+    <img src="../../assets/workshop.avif" style="width:100%; height:200px">
+  </div>
+  <div class="column">
+    <img src="../../assets/kids.avif" style="width:100%; height:200px" >
+  </div>
+  <div class="column">
+    <img src="../../assets/esports.avif" style="width:100%; height:200px">
+  </div>
+  <div class="column">
+    <img src="../../assets/upskill.avif" style="width:100%; height:200px">
+  </div>
+  <div class="column">
+    <img src="../../assets/stay.avif" style="width:100%; height:200px">
+  </div>
+</div>
+<br><br>     
+
+
+
